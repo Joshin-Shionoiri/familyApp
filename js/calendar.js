@@ -8,64 +8,61 @@ async function loadCalendar() {
 
   const today = new Date().toISOString().split("T")[0];
 
-  // 今日の予定
   const todayEvents = data.events.filter(e => e.date === today);
+  todayBox.innerHTML = todayEvents.length
+    ? todayEvents.map(e => formatEvent(e)).join("")
+    : "今日の予定はありません";
 
-  if (todayEvents.length === 0) {
-    todayBox.textContent = "今日の予定はありません";
-  } else {
-    todayBox.innerHTML = todayEvents.map(e => formatEvent(e)).join("");
-  }
-
-  // 今週の予定
   const now = new Date();
   const weekStart = new Date(now);
-  weekStart.setDate(now.getDate() - now.getDay() + 1); // 月曜
+  weekStart.setDate(now.getDate() - now.getDay() + 1);
 
   const weekEnd = new Date(weekStart);
-  weekEnd.setDate(weekStart.getDate() + 6); // 日曜
+  weekEnd.setDate(weekStart.getDate() + 6);
 
   const weekEvents = data.events.filter(e => {
     const d = new Date(e.date);
     return d >= weekStart && d <= weekEnd;
   });
 
-  if (weekEvents.length === 0) {
-    weekBox.textContent = "今週の予定はありません";
-  } else {
-    weekBox.innerHTML = weekEvents.map(e => formatEvent(e)).join("");
-  }
+  weekBox.innerHTML = weekEvents.length
+    ? weekEvents.map(e => formatEvent(e)).join("")
+    : "今週の予定はありません";
 
-  // 全ての予定
   allBox.innerHTML = data.events
     .sort((a, b) => a.date.localeCompare(b.date))
     .map(e => formatEvent(e))
     .join("");
 }
 
-
-// 予定の表示テンプレート（編集ボタン付き）
 function formatEvent(e) {
   return `
     <div class="event-item">
-      <div class="date">${e.date}</div>
-      <div class="title">${e.title}</div>
-      <div class="from">登録者: ${convertName(e.from)}</div>
-      <div class="detail">${e.detail || ""}</div>
+      <div>${e.date}</div>
+      <div><strong>${e.title}</strong></div>
+      <div>${e.detail || ""}</div>
       <a class="btn" href="calendar-edit.html?id=${e.id}">編集</a>
+      <button class="btn" onclick="deleteEvent('${e.id}')">削除</button>
     </div>
   `;
 }
 
-// 名前変換
-function convertName(name) {
-  switch (name) {
-    case "mother": return "お母さん";
-    case "father": return "お父さん";
-    case "sister": return "妹";
-    case "joshin": return "JOSHIN";
-    default: return name;
-  }
+async function deleteEvent(id) {
+  if (!confirm("この予定を削除しますか？")) return;
+
+  const res = await fetch("data/calendar.json");
+  const data = await res.json();
+
+  data.events = data.events.filter(e => e.id !== id);
+
+  await updateCalendarOnGitHub(data);
+
+  alert("予定を削除しました");
+  location.reload();
+}
+
+async function updateCalendarOnGitHub(updatedData) {
+  console.log("GitHub更新処理（後で実装）", updatedData);
 }
 
 loadCalendar();
