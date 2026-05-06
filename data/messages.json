@@ -1,0 +1,11 @@
+{
+  "messages": [
+    {
+      "id": "msg-123456",
+      "from": "joshin",
+      "to": "mother",
+      "text": "今日もゆっくり休んでね！",
+      "today": false
+    }
+  ]
+}
