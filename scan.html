@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>マッサージ券の読み取り</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #fafafa;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header {
+      background: #4CAF50;
+      color: white;
+      padding: 20px;
+      font-size: 22px;
+      font-weight: bold;
+    }
+    .container {
+      padding: 20px;
+    }
+    #preview {
+      width: 100%;
+      max-width: 350px;
+      margin: 0 auto;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background: #4CAF50;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>マッサージ券の読み取り</header>
+
+  <div class="container">
+
+    <video id="preview"></video>
+
+    <p id="result">QRコードを読み取ってください</p>
+
+    <a class="btn" href="admin-home.html">管理者ホームに戻る</a>
+
+  </div>
+
+  <script src="js/scanner.js"></script>
+  <script src="js/admin-scan.js"></script>
+
+</body>
+</html>
