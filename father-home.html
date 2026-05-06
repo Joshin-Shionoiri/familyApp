@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>お父さんのホーム</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f0f8ff;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #64B5F6;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .container {
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background: #64B5F6;
+      color: white;
+      border-radius: 8px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    .btn:hover {
+      background: #5aa8e8;
+    }
+    .event-item {
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>お父さんのホーム</header>
+
+  <div class="container">
+
+    <!-- 今日の予定 -->
+    <div class="card">
+      <h2>今日の予定</h2>
+      <div id="todaySchedule">読み込み中…</div>
+    </div>
+
+    <!-- メッセージ -->
+    <div class="card">
+      <h2>メッセージ</h2>
+      <div id="messageList">読み込み中…</div>
+      <a class="btn" href="messages.html">もっと見る</a>
+    </div>
+
+    <!-- カレンダー -->
+    <div class="card">
+      <h2>カレンダー</h2>
+      <a class="btn" href="calendar-month.html">月カレンダーを見る</a>
+      <a class="btn" href="calendar.html">リスト表示を見る</a>
+    </div>
+
+    <a class="btn" href="index.html">ログアウト</a>
+
+  </div>
+
+  <script src="js/father-home.js"></script>
+
+</body>
+</html>
