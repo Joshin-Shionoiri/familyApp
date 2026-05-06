@@ -1,3 +1,8 @@
+// ログインチェック
+const user = localStorage.getItem("loginUser");
+if (user !== "mother") {
+  location.href = "index.html";
+}
 // 今日の予定
 async function loadTodaySchedule() {
   const box = document.getElementById("todaySchedule");
