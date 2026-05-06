@@ -1,3 +1,8 @@
+// ログインチェック
+const user = localStorage.getItem("loginUser");
+if (user !== "mother") {
+  location.href = "index.html";
+}
 // 今日のひとこと
 async function loadTodayMessage() {
   const box = document.getElementById("todayMessage");
