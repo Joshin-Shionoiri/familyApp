@@ -1,0 +1,8 @@
+{
+  "users": [
+    { "name": "塩野入 あい", "key": "AI-KEY-2025", "role": "mother" },
+    { "name": "塩野入 晴心", "key": "JOSHIN-KEY-2025", "role": "admin" },
+    { "name": "塩野入 華心", "key": "HANAKO-KEY-2025", "role": "sister" },
+    { "name": "塩野入 睦", "key": "MAKOTO-KEY-2025", "role": "father" }
+  ]
+}
