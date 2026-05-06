@@ -2,67 +2,107 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Family Login</title>
+  <title>家族アプリ ログイン</title>
   <link rel="stylesheet" href="css/style.css">
+
   <style>
-    /* 最低限の見た目（style.cssがなくても動くように） */
     body {
       font-family: sans-serif;
       background: #f5f5f5;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      margin: 0;
+      padding: 0;
     }
-    .login-box {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      width: 300px;
-      text-align: center;
-    }
-    input {
-      width: 100%;
-      padding: 10px;
-      margin-top: 15px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 16px;
-    }
-    button {
-      margin-top: 20px;
-      width: 100%;
-      padding: 12px;
+
+    header {
       background: #4CAF50;
       color: white;
-      border: none;
-      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .container {
+      padding: 20px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    select, button {
+      width: 100%;
+      padding: 12px;
       font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-top: 10px;
+    }
+
+    button {
+      background: #4CAF50;
+      color: white;
       cursor: pointer;
     }
+
     button:hover {
-      background: #45a049;
-    }
-    .error {
-      color: red;
-      margin-top: 10px;
-      display: none;
+      background: #43a047;
     }
   </style>
 </head>
 
 <body>
-  <div class="login-box">
-    <h2>Family Login</h2>
-    <p>家族キーを入力してください</p>
 
-    <input id="keyInput" type="password" placeholder="例: MOTHER-KEY-2025">
-    <button onclick="login()">ログイン</button>
+  <header>家族アプリ ログイン</header>
 
-    <div id="error" class="error">キーが違います</div>
+  <div class="container">
+
+    <div class="card">
+      <h2>ユーザーを選択</h2>
+
+      <select id="userSelect">
+        <option value="mother">お母さん</option>
+        <option value="father">お父さん</option>
+        <option value="sister">妹</option>
+        <option value="joshin">JOSHIN</option>
+      </select>
+
+      <button onclick="login()">ログイン</button>
+    </div>
+
   </div>
 
-  <script src="js/login.js"></script>
+  <script>
+    function login() {
+      const user = document.getElementById("userSelect").value;
+
+      // ログインユーザーを保存
+      localStorage.setItem("loginUser", user);
+
+      // ユーザーごとのホームに移動
+      switch (user) {
+        case "mother":
+          location.href = "mother-home.html";
+          break;
+        case "father":
+          location.href = "father-home.html";
+          break;
+        case "sister":
+          location.href = "sister-home.html";
+          break;
+        case "joshin":
+          location.href = "admin-home.html";
+          break;
+      }
+    }
+  </script>
+
 </body>
 </html>
