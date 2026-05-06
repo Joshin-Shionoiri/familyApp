@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>マッサージ券の管理</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #fafafa;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #4CAF50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+    }
+    .container {
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background: #4CAF50;
+      color: white;
+      border-radius: 8px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    .btn:hover {
+      background: #43a047;
+    }
+    .ticket-item {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+    .used {
+      color: #888;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>マッサージ券の管理</header>
+
+  <div class="container">
+
+    <!-- 新しい券を発行 -->
+    <div class="card">
+      <h2>新しいマッサージ券を発行</h2>
+      <button class="btn" onclick="createTicket()">券を発行する</button>
+      <p id="createStatus"></p>
+    </div>
+
+    <!-- 発行済み券一覧 -->
+    <div class="card">
+      <h2>発行済みの券一覧</h2>
+      <div id="ticketList">読み込み中…</div>
+    </div>
+
+    <a class="btn" href="admin-home.html">管理者ホームに戻る</a>
+
+  </div>
+
+  <script src="js/admin-tickets.js"></script>
+
+</body>
+</html>
