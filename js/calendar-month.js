@@ -1,20 +1,20 @@
 let currentYear = new Date().getFullYear();
-let currentMonth = new Date().getMonth(); // 0=1月
+let currentMonth = new Date().getMonth();
 
-let calendarEvents = {}; // 日付ごとの予定数を保存
+let calendarEvents = {}; // 日付ごとの予定リストを保存
 
 // 予定データを読み込む
 async function loadEvents() {
   const res = await fetch("data/calendar.json");
   const data = await res.json();
 
-  // 日付ごとに予定数をカウント
+  // 日付ごとに予定をまとめる
   calendarEvents = {};
   data.events.forEach(e => {
     if (!calendarEvents[e.date]) {
-      calendarEvents[e.date] = 0;
+      calendarEvents[e.date] = [];
     }
-    calendarEvents[e.date]++;
+    calendarEvents[e.date].push(e);
   });
 
   renderCalendar();
@@ -43,11 +43,10 @@ function renderCalendar() {
   for (let day = 1; day <= totalDays; day++) {
     const dateStr = `${currentYear}-${String(currentMonth + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
 
-    // 予定がある日なら ● をつける
     const hasEvent = calendarEvents[dateStr] ? "●" : "";
 
     html += `
-      <td>
+      <td onclick="showEvents('${dateStr}')" style="cursor:pointer;">
         ${day}
         <div style="color:#4CAF50; font-size:18px; margin-top:4px;">
           ${hasEvent}
@@ -63,6 +62,30 @@ function renderCalendar() {
   html += "</tr>";
 
   calendarBody.innerHTML = html;
+}
+
+// 日付クリックで予定を表示
+function showEvents(dateStr) {
+  const title = document.getElementById("selectedDateTitle");
+  const box = document.getElementById("selectedDateEvents");
+
+  title.textContent = `${dateStr} の予定`;
+
+  const events = calendarEvents[dateStr];
+
+  if (!events || events.length === 0) {
+    box.innerHTML = "予定はありません";
+    return;
+  }
+
+  box.innerHTML = events
+    .map(e => `
+      <div style="padding:10px; border-bottom:1px solid #ddd;">
+        <strong>${e.title}</strong><br>
+        <span>${e.detail || ""}</span>
+      </div>
+    `)
+    .join("");
 }
 
 function prevMonth() {
