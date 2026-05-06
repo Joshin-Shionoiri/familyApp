@@ -1,42 +1,47 @@
-async function addEvent() {
-  const date = document.getElementById("eventDate").value;
-  const title = document.getElementById("eventTitle").value.trim();
-  const detail = document.getElementById("eventDetail").value.trim();
-  const from = document.getElementById("eventFrom").value;
-  const status = document.getElementById("status");
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>予定を追加する</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
 
-  if (!date || !title) {
-    status.textContent = "日付とタイトルは必須です";
-    return;
-  }
+<body>
 
-  const newEvent = {
-    id: "event-" + Date.now(),
-    date: date,
-    title: title,
-    detail: detail,
-    from: from
-  };
+  <header>予定を追加する</header>
 
-  // 既存データ取得
-  const res = await fetch("data/calendar.json");
-  const data = await res.json();
+  <div class="container">
 
-  // 新しい予定を追加
-  data.events.push(newEvent);
+    <div class="card">
+      <h2>新しい予定</h2>
 
-  // GitHub API で保存（後で実装）
-  await updateCalendarOnGitHub(data);
+      <label>日付</label>
+      <input type="date" id="eventDate">
 
-  status.textContent = "予定を追加しました！";
+      <label>タイトル</label>
+      <input type="text" id="eventTitle">
 
-  // 入力欄リセット
-  document.getElementById("eventTitle").value = "";
-  document.getElementById("eventDetail").value = "";
-}
+      <label>詳細（任意）</label>
+      <textarea id="eventDetail"></textarea>
 
+      <label>登録者</label>
+      <select id="eventFrom">
+        <option value="mother">お母さん</option>
+        <option value="father">お父さん</option>
+        <option value="sister">妹</option>
+        <option value="joshin">JOSHIN</option>
+      </select>
 
-// GitHub API 書き込み（後で実装）
-async function updateCalendarOnGitHub(updatedData) {
-  console.log("GitHub更新処理（後で実装）", updatedData);
-}
+      <button class="btn" onclick="addEvent()">追加する</button>
+
+      <p id="status"></p>
+    </div>
+
+    <a class="btn" href="calendar.html">戻る</a>
+
+  </div>
+
+  <script src="js/calendar-add.js"></script>
+
+</body>
+</html>
