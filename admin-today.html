@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>今日のひとこと設定</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #fafafa;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #4CAF50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+    }
+    .container {
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background: #4CAF50;
+      color: white;
+      border-radius: 8px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background: #43a047;
+    }
+    #status {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #444;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>今日のひとこと設定</header>
+
+  <div class="container">
+
+    <div class="card">
+      <h2>今日のひとことを入力</h2>
+
+      <textarea id="todayText" placeholder="今日のお母さんへのひとこと…"></textarea>
+
+      <button class="btn" onclick="setTodayMessage()">設定する</button>
+
+      <p id="status"></p>
+    </div>
+
+    <a class="btn" href="admin-home.html">管理者ホームに戻る</a>
+
+  </div>
+
+  <script src="js/admin-today.js"></script>
+
+</body>
+</html>
