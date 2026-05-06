@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>予定を編集</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <header>予定を編集</header>
+
+  <div class="container">
+
+    <div class="card">
+      <h2>予定の内容</h2>
+
+      <label>日付</label>
+      <input type="date" id="eventDate">
+
+      <label>タイトル</label>
+      <input type="text" id="eventTitle">
+
+      <label>詳細</label>
+      <textarea id="eventDetail"></textarea>
+
+      <button class="btn" onclick="saveEvent()">保存する</button>
+
+      <p id="status"></p>
+    </div>
+
+    <a class="btn" href="calendar.html">戻る</a>
+
+  </div>
+
+  <script src="js/calendar-edit.js"></script>
+
+</body>
+</html>
