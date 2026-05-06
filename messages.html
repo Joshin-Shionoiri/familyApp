@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>メッセージ一覧</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #fafafa;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #ff7f9f;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+    }
+    .container {
+      padding: 20px;
+    }
+    .message-card {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      margin-bottom: 15px;
+    }
+    .from {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 5px;
+    }
+    .text {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+    .today {
+      background: #fff0f5;
+      border-left: 5px solid #ff7f9f;
+    }
+    .back-btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background: #ff7f9f;
+      color: white;
+      border-radius: 8px;
+      text-align: center;
+      text-decoration: none;
+      margin-top: 20px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>家族からのメッセージ</header>
+
+  <div class="container" id="messageList">
+    読み込み中…
+  </div>
+
+  <a class="back-btn" href="mother-home.html">戻る</a>
+
+  <script src="js/messages.js"></script>
+</body>
+</html>
