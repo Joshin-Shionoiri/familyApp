@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>月カレンダー</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #fafafa;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #4CAF50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    .calendar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .calendar-header button {
+      padding: 8px 12px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .calendar-header button:hover {
+      background: #43a047;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+      width: 14.2%;
+      height: 60px;
+      text-align: center;
+      border: 1px solid #eee;
+      font-size: 16px;
+    }
+
+    th {
+      background: #f0f0f0;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>月カレンダー</header>
+
+  <div class="container">
+
+    <div class="calendar-header">
+      <button onclick="prevMonth()">＜</button>
+      <h2 id="monthTitle">2026年5月</h2>
+      <button onclick="nextMonth()">＞</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>日</th>
+          <th>月</th>
+          <th>火</th>
+          <th>水</th>
+          <th>木</th>
+          <th>金</th>
+          <th>土</th>
+        </tr>
+      </thead>
+      <tbody id="calendarBody">
+        <!-- JSで生成 -->
+      </tbody>
+    </table>
+
+    <a class="btn" href="calendar.html">リスト表示に戻る</a>
+    <a class="btn" href="admin-home.html">ホームに戻る</a>
+
+  </div>
+
+  <script src="js/calendar-month.js"></script>
+
+</body>
+</html>
