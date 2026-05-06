@@ -1,54 +1,72 @@
-// 今日のメッセージを読み込む
+// 今日のひとこと
 async function loadTodayMessage() {
+  const box = document.getElementById("todayMessage");
+
   const res = await fetch("data/messages.json");
   const data = await res.json();
 
   const todayMsg = data.messages.find(m => m.today === true);
-  const box = document.getElementById("todayMessage");
 
-  if (todayMsg) {
-    box.textContent = todayMsg.text;
-  } else {
-    box.textContent = "今日のメッセージはありません";
-  }
-}
-
-loadTodayMessage();
-
-
-// お母さんがメッセージを送る
-async function sendMotherMessage() {
-  const text = document.getElementById("motherMessage").value.trim();
-  const status = document.getElementById("sendStatus");
-
-  if (!text) {
-    status.textContent = "メッセージを入力してください";
+  if (!todayMsg) {
+    box.textContent = "今日のひとことはありません";
     return;
   }
 
-  const newMessage = {
-    id: "msg-" + Date.now(),
-    from: "mother",
-    text: text,
-    today: false
-  };
+  box.textContent = todayMsg.text;
+}
 
-  // 既存メッセージを取得
+
+// 今日の予定（今回追加）
+async function loadTodaySchedule() {
+  const box = document.getElementById("todaySchedule");
+
+  const res = await fetch("data/calendar.json");
+  const data = await res.json();
+
+  const today = new Date().toISOString().split("T")[0];
+
+  const todayEvents = data.events.filter(e => e.date === today);
+
+  if (todayEvents.length === 0) {
+    box.textContent = "今日の予定はありません";
+    return;
+  }
+
+  box.innerHTML = todayEvents
+    .map(e => `
+      <div class="event-item">
+        <strong>${e.title}</strong><br>
+        <span>${e.detail || ""}</span>
+      </div>
+    `)
+    .join("");
+}
+
+
+// メッセージ一覧（最新3件）
+async function loadMessages() {
+  const box = document.getElementById("messageList");
+
   const res = await fetch("data/messages.json");
   const data = await res.json();
 
-  // 追加
-  data.messages.push(newMessage);
+  const motherMsgs = data.messages
+    .filter(m => m.to === "mother" || m.to === "all")
+    .slice(-3)
+    .reverse();
 
-  // GitHub API で messages.json を更新（後で実装）
-  await updateMessagesOnGitHub(data);
+  if (motherMsgs.length === 0) {
+    box.textContent = "メッセージはありません";
+    return;
+  }
 
-  status.textContent = "送信しました！";
-  document.getElementById("motherMessage").value = "";
+  box.innerHTML = motherMsgs
+    .map(m => `<div class="event-item">${m.text}</div>`)
+    .join("");
 }
 
 
-// GitHub API 書き込み（後で実装）
-async function updateMessagesOnGitHub(updatedData) {
-  console.log("GitHub更新処理（後で実装）", updatedData);
-}
+// ページ読み込み時に実行
+loadTodayMessage();
+loadTodaySchedule();
+loadMessages();
