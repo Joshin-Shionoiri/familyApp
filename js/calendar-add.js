@@ -1,47 +1,33 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>予定を追加する</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
+async function addEvent() {
+  const date = document.getElementById("eventDate").value;
+  const title = document.getElementById("eventTitle").value.trim();
+  const detail = document.getElementById("eventDetail").value.trim();
+  const from = document.getElementById("eventFrom").value;
+  const status = document.getElementById("status");
 
-<body>
+  if (!date || !title) {
+    status.textContent = "日付とタイトルは必須です";
+    return;
+  }
 
-  <header>予定を追加する</header>
+  const newEvent = {
+    id: "event-" + Date.now(),
+    date,
+    title,
+    detail,
+    from
+  };
 
-  <div class="container">
+  const res = await fetch("data/calendar.json");
+  const data = await res.json();
 
-    <div class="card">
-      <h2>新しい予定</h2>
+  data.events.push(newEvent);
 
-      <label>日付</label>
-      <input type="date" id="eventDate">
+  await updateCalendarOnGitHub(data);
 
-      <label>タイトル</label>
-      <input type="text" id="eventTitle">
+  status.textContent = "予定を追加しました！";
+}
 
-      <label>詳細（任意）</label>
-      <textarea id="eventDetail"></textarea>
-
-      <label>登録者</label>
-      <select id="eventFrom">
-        <option value="mother">お母さん</option>
-        <option value="father">お父さん</option>
-        <option value="sister">妹</option>
-        <option value="joshin">JOSHIN</option>
-      </select>
-
-      <button class="btn" onclick="addEvent()">追加する</button>
-
-      <p id="status"></p>
-    </div>
-
-    <a class="btn" href="calendar.html">戻る</a>
-
-  </div>
-
-  <script src="js/calendar-add.js"></script>
-
-</body>
-</html>
+async function updateCalendarOnGitHub(updatedData) {
+  console.log("GitHub更新処理（後で実装）", updatedData);
+}
