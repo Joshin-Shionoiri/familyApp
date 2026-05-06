@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>お母さんホーム</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #fafafa;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #ff7f9f;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .container {
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    .card h2 {
+      margin-top: 0;
+      font-size: 20px;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background: #ff7f9f;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      text-align: center;
+      margin-top: 10px;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background: #ff6a8c;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    お母さんホーム
+  </header>
+
+  <div class="container">
+
+    <!-- 今日のメッセージ -->
+    <div class="card" id="todayMessageCard">
+      <h2>今日のひとこと</h2>
+      <p id="todayMessage">読み込み中…</p>
+    </div>
+
+    <!-- マッサージ券 -->
+    <div class="card">
+      <h2>マッサージ券</h2>
+      <a class="btn" href="massage.html">マッサージ券を使う</a>
+    </div>
+
+    <!-- ストレッチ動画 -->
+    <div class="card">
+      <h2>肩ストレッチ動画</h2>
+      <a class="btn" href="stretch.html">動画を見る</a>
+    </div>
+
+    <!-- メッセージ -->
+    <div class="card">
+      <h2>家族からのメッセージ</h2>
+      <a class="btn" href="messages.html">メッセージを見る</a>
+    </div>
+
+    <!-- フォトフレーム -->
+    <div class="card">
+      <h2>フォトフレーム</h2>
+      <a class="btn" href="photos.html">写真を見る</a>
+    </div>
+
+  </div>
+
+  <script src="js/mother-home.js"></script>
+</body>
+</html>
