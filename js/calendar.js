@@ -44,7 +44,7 @@ async function loadCalendar() {
 }
 
 
-// 予定の表示テンプレート
+// 予定の表示テンプレート（編集ボタン付き）
 function formatEvent(e) {
   return `
     <div class="event-item">
@@ -52,6 +52,7 @@ function formatEvent(e) {
       <div class="title">${e.title}</div>
       <div class="from">登録者: ${convertName(e.from)}</div>
       <div class="detail">${e.detail || ""}</div>
+      <a class="btn" href="calendar-edit.html?id=${e.id}">編集</a>
     </div>
   `;
 }
