@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>管理者ホーム（JOSHIN）</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #4CAF50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .container {
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    .card h2 {
+      margin-top: 0;
+      font-size: 20px;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background: #4CAF50;
+      color: white;
+      border-radius: 8px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    .btn:hover {
+      background: #43a047;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>管理者ホーム（JOSHIN）</header>
+
+  <div class="container">
+
+    <!-- マッサージ券管理 -->
+    <div class="card">
+      <h2>マッサージ券の管理</h2>
+      <a class="btn" href="admin-tickets.html">券を発行・管理する</a>
+    </div>
+
+    <!-- メッセージ送信 -->
+    <div class="card">
+      <h2>メッセージ送信</h2>
+      <a class="btn" href="admin-messages.html">メッセージを送る</a>
+    </div>
+
+    <!-- 今日のひとこと設定 -->
+    <div class="card">
+      <h2>今日のひとこと</h2>
+      <a class="btn" href="admin-today.html">今日のメッセージを設定する</a>
+    </div>
+
+    <!-- ストレッチ動画管理 -->
+    <div class="card">
+      <h2>ストレッチ動画</h2>
+      <a class="btn" href="admin-videos.html">動画を追加・管理する</a>
+    </div>
+
+    <!-- フォトフレーム写真管理 -->
+    <div class="card">
+      <h2>フォトフレーム</h2>
+      <a class="btn" href="admin-photos.html">写真を追加する</a>
+    </div>
+
+    <!-- 使用履歴 -->
+    <div class="card">
+      <h2>マッサージ券の使用履歴</h2>
+      <a class="btn" href="admin-history.html">履歴を見る</a>
+    </div>
+
+    <a class="btn" href="index.html">ログアウト</a>
+
+  </div>
+
+</body>
+</html>
